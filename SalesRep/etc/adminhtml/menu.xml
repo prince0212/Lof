@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Lof_SalesRep::salesrep" title="Sales Representative" module="Lof_SalesRep" sortOrder="70" resource="Lof_SalesRep::lof_salesrep" parent="Lof_All::lof_all"/>
+        <add id="Lof_SalesRep::salesrep_dashboard" title="Sales Report" module="Lof_SalesRep" sortOrder="5" resource="Lof_SalesRep::dashboard" parent="Lof_SalesRep::salesrep" action="lof_salesrep/salesrep/sales"/>
+        <add id="Lof_SalesRep::order" title="Orders" module="Lof_SalesRep" sortOrder="10" parent="Lof_SalesRep::salesrep" action="lof_salesrep/order/index" resource="Lof_SalesRep::order" />
+        <add id="Lof_SalesRep::invoice" title="Invoice" module="Lof_SalesRep" sortOrder="20" parent="Lof_SalesRep::salesrep" action="lof_salesrep/invoice/index" resource="Lof_SalesRep::invoice" />
+        <add id="Lof_SalesRep::shipment" title="Shipment" module="Lof_SalesRep" sortOrder="30" parent="Lof_SalesRep::salesrep" action="lof_salesrep/shipment/index" resource="Lof_SalesRep::shipment" />
+        <add id="Lof_SalesRep::creditmemo" title="Creditmemo" module="Lof_SalesRep" sortOrder="40" parent="Lof_SalesRep::salesrep" action="lof_salesrep/creditmemo/index" resource="Lof_SalesRep::creditmemo" />
+        <add id="Lof_SalesRep::configurations" title="Settings" module="Lof_SalesRep" sortOrder="100" parent="Lof_SalesRep::salesrep" action="adminhtml/system_config/edit/section/salesrep" resource="Lof_SalesRep::configurations" />
+    </menu>
+</config>

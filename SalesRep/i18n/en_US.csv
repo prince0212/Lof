@@ -1,0 +1,154 @@
+"Assign Sales Representative","Assign Sales Representative"
+"Sales Representative","Sales Representative"
+"Assign Sales Rep & Submit Comment","Assign Sales Rep & Submit Comment"
+Unknown,Unknown
+"User ID","User ID"
+"First Name","First Name"
+"Last Name","Last Name"
+Email,Email
+"Customer Group","Customer Group"
+Action,Action
+Edit,Edit
+Assigned,Assigned
+Status,Status
+Active,Active
+Inactive,Inactive
+"Additional Info","Additional Info"
+"Is Sale Representative","Is Sale Representative"
+"Account Status","Account Status"
+Yes,Yes
+No,No
+"Restrictions for viewing customers and orders will be applied for this role only.","Restrictions for viewing customers and orders will be applied for this role only."
+"Bcc To","Bcc To"
+"Phone Number","Phone Number"
+"Display Name","Display Name"
+Address,Address
+Country,Country
+"City or State","City or State"
+Postcode,Postcode
+"SalesRep Reports","SalesRep Reports"
+"Increment Id #","Increment Id #"
+"Purchase On","Purchase On"
+"Base Grand Total","Base Grand Total"
+"Base Discount Amount","Base Discount Amount"
+"Base Discount Canceled","Base Discount Canceled"
+"Base Discount Invoiced","Base Discount Invoiced"
+"Base Discount Refunded","Base Discount Refunded"
+"Base Shipping Amount","Base Shipping Amount"
+"Base Shipping Canceled","Base Shipping Canceled"
+"Base Shipping Invoiced","Base Shipping Invoiced"
+"Base Shipping Refunded","Base Shipping Refunded"
+"Base Shipping Tax Amount","Base Shipping Tax Amount"
+"Base Shipping Tax Refunded","Base Shipping Tax Refunded"
+"Base Subtotal","Base Subtotal"
+"Base Subtotal Canceled","Base Subtotal Canceled"
+"Base Subtotal Invoiced","Base Subtotal Invoiced"
+"Base Subtotal Refunded","Base Subtotal Refunded"
+"Base Tax Amount","Base Tax Amount"
+"Base Tax Canceled","Base Tax Canceled"
+"Base Tax Invoiced","Base Tax Invoiced"
+"Base Tax Refunded","Base Tax Refunded"
+CSV,CSV
+"Excel XML","Excel XML"
+"Sale Representative Info","Sale Representative Info"
+"Sale Representative","Sale Representative"
+Information,Information
+"Bcc Emails","Bcc Emails"
+Telephone,Telephone
+Admin,Admin
+Log,Log
+Message,Message
+Orders,Orders
+"This order no longer exists.","This order no longer exists."
+"We cannot add order history.","We cannot add order history."
+"SalesRep Dashboard","SalesRep Dashboard"
+"The Sales Representative you have selected does not exist.","The Sales Representative you have selected does not exist."
+"You saved dealer.","You saved dealer."
+"We can't send the email quote right now.","We can't send the email quote right now."
+Guest,Guest
+"Could not save the commentHistory: %1","Could not save the commentHistory: %1"
+"CommentHistory with id ""%1"" does not exist.","CommentHistory with id ""%1"" does not exist."
+"Could not delete the CommentHistory: %1","Could not delete the CommentHistory: %1"
+"%1 (Default)","%1 (Default)"
+"--- Choose a Sales Rep User ---","--- Choose a Sales Rep User ---"
+"Could not save the log: %1","Could not save the log: %1"
+"Log with id ""%1"" does not exist.","Log with id ""%1"" does not exist."
+"Could not delete the Log: %1","Could not delete the Log: %1"
+"Could not save the message: %1","Could not save the message: %1"
+"Message with id ""%1"" does not exist.","Message with id ""%1"" does not exist."
+"Could not delete the Message: %1","Could not delete the Message: %1"
+"You don't have permission to view this order.","You don't have permission to view this order."
+"Assigned Customers","Assigned Customers"
+Reports,Reports
+"You don't have permission to view this creditmemo.","You don't have permission to view this creditmemo."
+"You don't have permission to edit this Customer.","You don't have permission to edit this Customer."
+"You don't have permission to view this invoice.","You don't have permission to view this invoice."
+"You don't have permission to view this shipment.","You don't have permission to view this shipment."
+"Sale Representative Order","Sale Representative Order"
+Comment,Comment
+"Notify Sale Representative by Email","Notify Sale Representative by Email"
+Notified,Notified
+"Not Notified","Not Notified"
+"Assigned From","Assigned From"
+To,To
+"Graph showing sales by Sales Representative","Graph showing sales by Sales Representative"
+Totals,Totals
+Sales,Sales
+Discount,Discount
+Order,Order
+Customers,Customers
+Averages,Averages
+Sales/Order,Sales/Order
+Discount/Order,Discount/Order
+"Hello Lof_SalesRep::salesrep/edit/tabs.phtml","Hello Lof_SalesRep::salesrep/edit/tabs.phtml"
+"Choose a Sale Representative","Choose a Sale Representative"
+Save,Save
+"Send Email","Send Email"
+Phone,Phone
+"Call Mobile Phone","Call Mobile Phone"
+City,City
+"Your Sale Representative Info","Your Sale Representative Info"
+"%store_name: New Quote Request","%store_name: New Quote Request"
+"A new comment was added to Quote: ","A new comment was added to Quote: "
+"Placed on ","Placed on "
+"A new comment was added to Order: ","A new comment was added to Order: "
+"%store_name: Update Your Dealer","%store_name: Update Your Dealer"
+"Your Dealer has been changed.","Your Dealer has been changed."
+"Your Dealer: ","Your Dealer: "
+"General Setting","General Setting"
+"Show Order Assign Tab","Show Order Assign Tab"
+"Indicate `No` if you want hidden Order Re-assign Tab","Indicate `No` if you want hidden Order Re-assign Tab"
+"Sales Representative Can Assign Order to Other Sales Representative","Sales Representative Can Assign Order to Other Sales Representative"
+"Indicate `No` if you want sale representative to assign order to the store administrator only.","Indicate `No` if you want sale representative to assign order to the store administrator only."
+"Show the `Manage Customers` tab","Show the `Manage Customers` tab"
+"On the `Edit User` page.","On the `Edit User` page."
+"Show Sales Representative Tab on Customer","Show Sales Representative Tab on Customer"
+"Indicate `No` if you want hidden Sales Representative Tab","Indicate `No` if you want hidden Sales Representative Tab"
+"Email Notification","Email Notification"
+"Send Email For Customer When Sales Representative Change","Send Email For Customer When Sales Representative Change"
+"Email Sender","Email Sender"
+"Admin Email","Admin Email"
+"Admin Name","Admin Name"
+"Assign Sales Representative Email Template For Order","Assign Sales Representative Email Template For Order"
+"Update Sales Representative Email Template","Update Sales Representative Email Template"
+"Frontend Settings","Frontend Settings"
+"Allow Customers to select a Sales Representative on Registration","Allow Customers to select a Sales Representative on Registration"
+"Allow Customers to select a Sales Representative in Customer Account","Allow Customers to select a Sales Representative in Customer Account"
+"Show Sales Representative description in Customer Account","Show Sales Representative description in Customer Account"
+"Order Created","Order Created"
+"Order Updated","Order Updated"
+"The Order Updated report is created in
+                            real time and does not require a refresh.
+                        ","The Order Updated report is created in
+                            real time and does not require a refresh.
+                        "
+"Quote ID","Quote ID"
+Content,Content
+"Created At","Created At"
+"Updated At","Updated At"
+ID,ID
+message_id,message_id
+"Store View","Store View"
+Delete,Delete
+"Delete items","Delete items"
+"Are you sure you wan't to delete selected items?","Are you sure you wan't to delete selected items?"

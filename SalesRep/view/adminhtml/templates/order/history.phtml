@@ -1,0 +1,109 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+
+$quote = $block->getOrder();
+?>
+<div id="order_assign_history_block" class="edit-order-comments">
+    <?php if ($block->canAddComment()):?>
+        <div class="assign_dealer-block" id="quote_assign_form">
+            <div class="admin__field">
+                <label for="assign_dealer" class="admin__field-label"><?= /* @noEscape */ __('Sale Representative Order') ?></label>
+                <div class="admin__field-control dealer-comment">
+                    <select name="history[salesrep_id]" id="assign_dealer" class="admin__control-select">
+                        <?php $options = $block->getSalesRep(); ?>
+                        <?php $userId = $quote->getSalesrepId(); ?>
+                        <option value="0"><?= /* @noEscape */ __('Admin') ?></option>
+                        <?php foreach ($options as $option): ?>
+                        <?php
+                        $user_name = $option->getSalesrepDisplayName();
+                        $user_name =  $user_name?$user_name:($option->getFirstName().' '.$option->getLastName());
+                        ?>
+                            <option value="<?= $block->escapeHtmlAttr($option->getUserId()) ?>"<?php if ($option->getUserId() == $userId) echo ' selected="selected"' ?>><?= $block->escapeHtml($user_name) ?></option>
+                        <?php endforeach;?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="admin__field ">
+                <label for="history_comment" class="admin__field-label">
+                    <?= /* @noEscape */ __('Comment') ?>
+                </label>
+                <div class="admin__field-control">
+                    <textarea name="history[comment]"
+                              rows="3"
+                              cols="5"
+                              id="history_comment"
+                              class="admin__control-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="admin__field">
+                <div class="order-history-comments-options">
+                    <div class="admin__field admin__field-option">
+                            <input name="history[is_customer_notified]"
+                                   type="checkbox"
+                                   id="history_notify"
+                                   class="admin__control-checkbox"
+                                   value="1" />
+                            <label class="admin__field-label" for="history_notify">
+                                <?= /* @noEscape */ __('Notify Sale Representative by Email') ?>
+                            </label>
+                    </div>
+                </div>
+
+                <div class="order-history-comments-actions  dealer-comment">
+                    <?= $block->getChildHtml('submit_button') ?>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
+
+    <ul class="note-list ">
+        <?php foreach ($block->getCommentHistoryCollection() as $_item):?>
+            <li class="note-list-item">
+                <span class="note-list-date"><?= /* @noEscape */ $block->formatDate($_item->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?></span>
+                <span class="note-list-time"><?= /* @noEscape */ $block->formatTime($_item->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?></span>
+                <span class="note-list-status"><strong><?php echo $_item->getUserChange(); ?></strong></span>
+                <span class="note-list-customer">
+                    <?= /* @noEscape */ __('Sale Representative') ?>
+                    <?php if ($_item->getIsCustomerNotified()): ?>
+                        <span class="note-list-customer-notified"><?= /* @noEscape */ __( 'Notified' ) ?></span>
+                    <?php else: ?>
+                        <span class="note-list-customer-not-notified"><?= /* @noEscape */ __( 'Not Notified' ) ?></span>
+                    <?php endif; ?>
+                </span>
+                <?php if( $_item->getAssignTo() !== $_item->getAssignFrom()) {?>
+                    <div>
+                    <?= /* @noEscape */ __( 'Assigned From' ) ?><strong>
+                    <?php echo $_item->getAssignFrom(); ?>
+                    </strong> <?= /* @noEscape */ __( 'To' ) ?>
+                    <strong><?php echo $_item->getAssignTo(); ?> </strong>
+                    </div>
+                <?php }else { ?>
+                <?php } ?>
+
+                <?php if ($_item->getComment()): ?>
+                    <div class="note-list-comment"><?= $block->escapeHtml($_item->getComment(), ['b', 'br', 'strong', 'i', 'u', 'a']) ?></div>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

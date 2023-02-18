@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Lof\SalesRep\Api\LogRepositoryInterface" type="Lof\SalesRep\Model\LogRepository"/>
+    <preference for="Lof\SalesRep\Api\Data\LogInterface" type="Lof\SalesRep\Model\Data\Log"/>
+    <preference for="Lof\SalesRep\Api\Data\LogSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Lof\SalesRep\Api\CommentHistoryRepositoryInterface" type="Lof\SalesRep\Model\CommentHistoryRepository"/>
+    <preference for="Lof\SalesRep\Api\Data\CommentHistoryInterface" type="Lof\SalesRep\Model\Data\CommentHistory"/>
+    <preference for="Lof\SalesRep\Api\Data\CommentHistorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="lof_salesrep_log_grid_data_source" xsi:type="string">Lof\SalesRep\Model\ResourceModel\Log\Grid\Collection</item>
+				<item name="lof_salesrep_message_grid_data_source" xsi:type="string">Lof\SalesRep\Model\ResourceModel\Message\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="Lof\SalesRep\Model\ResourceModel\Log\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">lof_salesrep_log</argument>
+			<argument name="resourceModel" xsi:type="string">Lof\SalesRep\Model\ResourceModel\Log\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Lof\SalesRep\Model\ResourceModel\Message\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">lof_salesrep_message</argument>
+			<argument name="resourceModel" xsi:type="string">Lof\SalesRep\Model\ResourceModel\Message\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="salesrep_id" xsi:type="string">sales_order.salesrep_id</item>
+				<item name="assign_salesrep_id" xsi:type="string">sales_order.assign_salesrep_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Invoice\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="salesrep_id" xsi:type="string">sales_invoice.salesrep_id</item>
+                <item name="assign_salesrep_id" xsi:type="string">sales_invoice.assign_salesrep_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShipmentGridAggregator" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="salesrep_id" xsi:type="string">sales_shipment.salesrep_id</item>
+                <item name="assign_salesrep_id" xsi:type="string">sales_shipment.assign_salesrep_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CreditmemoGridAggregator" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="salesrep_id" xsi:type="string">sales_creditmemo.salesrep_id</item>
+                <item name="assign_salesrep_id" xsi:type="string">sales_creditmemo.assign_salesrep_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Sales\Controller\Adminhtml\Order\View">
+        <plugin name="lof_order_view" type="Lof\SalesRep\Plugin\Order\View" sortOrder="10" disabled="false"  />
+    </type>
+    <type name="Magento\Sales\Controller\Adminhtml\Shipment\AbstractShipment\View">
+        <plugin name="lof_shipment_view" type="Lof\SalesRep\Plugin\Shipment\View" sortOrder="10" disabled="false"  />
+    </type>
+    <type name="Magento\Sales\Controller\Adminhtml\Invoice\View">
+        <plugin name="lof_invoice_view" type="Lof\SalesRep\Plugin\Invoice\View" sortOrder="10" disabled="false"  />
+    </type>
+    <type name="Magento\Sales\Controller\Adminhtml\Creditmemo\View">
+        <plugin name="lof_creditmemo_view" type="Lof\SalesRep\Plugin\Creditmemo\View" sortOrder="10" disabled="false"  />
+    </type>
+    <type name="Magento\Customer\Controller\Adminhtml\Index\Edit">
+        <plugin name="lof_customer_edit" type="Lof\SalesRep\Plugin\Customer\Edit" sortOrder="10" disabled="false"  />
+    </type>
+</config>

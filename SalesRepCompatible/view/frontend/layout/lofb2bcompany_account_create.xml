@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://landofcoder.com/Lof-Commerce-License.txt
+ *
+ * @category   Landofcoder
+ * @package    Lof_Company
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2020-2018 Landofcoder Commerce Co. ( http://landofcoder.com )
+ * @license    http://landofcoder.com/Lof-Commerce-License.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="lof.form.additional.info">
+            <block class="Lof\SalesRep\Block\Salesrep\Index" name="customer.addtional.infor.salesrep" ifconfig="salesrep/frontend/show_dealer_on_registration" template="Lof_SalesRep::salesrep/create_customer.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

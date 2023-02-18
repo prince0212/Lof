@@ -1,0 +1,121 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+$show_salesrep_info = true;
+$show_salesrep_email = true;
+$show_salesrep_phone = true;
+$show_salesrep_address = false;
+$show_salesrep_city = false;
+$show_salesrep_postcode = false;
+$show_salesrep_country = false;
+?>
+<form class="form form-edit-account" action="<?= $block->escapeUrl($block->getUrl('lof_salesrep/salesrep/save')) ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
+    <fieldset class="fieldset info">
+        <?= $block->getBlockHtml('formkey') ?>
+        <legend class="legend"><span><?= $block->escapeHtml(__('Choose a Sale Representative')) ?></span></legend><br>
+        <select id="dealer-id" name="dealer_id" title="<?= $block->escapeHtmlAttr(__('Sales Representative')) ?>" >
+            <?php
+                $options = $block->getSalesRep();
+                $userId = $block->getCurrentSalerep()->getUserId();
+            ?>
+            <option value="0"></option>
+            <?php foreach ($options as $option): ?>
+                <?php
+                $user_name = $option->getSalesrepDisplayName();
+                $user_name =  $user_name?$user_name:($option->getFirstName().' '.$option->getLastName());
+                ?>
+                <option value="<?= $block->escapeHtmlAttr($option->getUserId()) ?>"<?php if ($option->getUserId() == $userId) { $salesrep = $option; echo ' selected="selected"'; } ?>><?= $block->escapeHtml($user_name) ?></option>
+            <?php endforeach;?>
+        </select>
+
+        <div class="actions-toolbar" style="padding: 10px 0 0;">
+            <div class="primary">
+                <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save')) ?>"><span><?= $block->escapeHtml(__('Save')) ?></span></button>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset">
+        <?php
+        if(isset($salesrep)){
+            if($show_salesrep_info && ($information = $salesrep->getSalesrepInfo())){
+                ?>
+            <div class="field form-field salesrep-info">
+                <label class="field-label"><?php echo __("Information"); ?></label>
+                <div class="field-value">
+                    <?php echo $information; ?>
+                </div>
+            </div>
+                <?php
+            }
+            if($show_salesrep_email && ($email = $salesrep->getEmail())){
+                ?>
+            <div class="field form-field salesrep-email">
+                <label class="field-label"><?php echo __("Email"); ?></label>
+                <div class="field-value">
+                    <?php echo '<a href="mailto:'.$email.'" title="'.__("Send Email").'">'.$email.'</a>'; ?>
+                </div>
+            </div>
+                <?php
+            }
+            if($show_salesrep_phone && ($phone = $salesrep->getSalesrepPhone())){
+                ?>
+            <div class="field form-field salesrep-phone">
+                <label class="field-label"><?php echo __("Phone"); ?></label>
+                <div class="field-value">
+                    <?php echo '<a href="call:'.$phone.'" title="'.__("Call Mobile Phone").'">'.$phone.'</a>'; ?>
+                </div>
+            </div>
+                <?php
+            }
+            if($show_salesrep_address && ($address = $salesrep->getSalesrepAddress())){
+                ?>
+            <div class="field form-field salesrep-address">
+                <label class="field-label"><?php echo __("Address"); ?></label>
+                <div class="field-value">
+                    <?php echo $address; ?>
+                </div>
+            </div>
+                <?php
+            }
+
+            if($show_salesrep_city && ($city = $salesrep->getSalesrepCityState())){
+                ?>
+            <div class="field form-field salesrep-city">
+                <label class="field-label"><?php echo __("City"); ?></label>
+                <div class="field-value">
+                    <?php echo $city; ?>
+                </div>
+            </div>
+                <?php
+            }
+            if($show_salesrep_postcode && ($postcode = $salesrep->getSalesrepPostcode())){
+                ?>
+            <div class="field form-field salesrep-postcode">
+                <label class="field-label"><?php echo __("Postcode"); ?></label>
+                <div class="field-value">
+                    <?php echo $postcode; ?>
+                </div>
+            </div>
+                <?php
+            }
+        }
+        ?>
+    </fieldset>
+</form>

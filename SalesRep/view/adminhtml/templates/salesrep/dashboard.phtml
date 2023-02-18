@@ -1,0 +1,45 @@
+<?php
+use Lof\SalesRep\Block\Adminhtml\Salesrep\Dashboard;
+
+/**
+ * @var $block Dashboard
+ */
+$orderCollection = $block->getCollection();
+
+?>
+<div class="sales-grid">
+    <div class="total">
+        <h1><?= __('Totals') ?></h1>
+        <ul>
+            <li>
+                <span><?=__("Sales")?></span>
+                <strong><?=$block->getPriceHtml($block->getTotalSales())?></strong>
+            </li>
+            <li>
+                <span><?=__("Discount")?></span>
+                <strong><?=$block->getPriceHtml($block->getTotalDiscount())?></strong>
+            </li>
+            <li>
+                <span><?=__("Order")?></span>
+                <strong><?=count($orderCollection)?></strong>
+            </li>
+            <li>
+                <span><?=__("Customers")?></span>
+                <strong><?=$block->countCustomers()?></strong>
+            </li>
+        </ul>
+    </div>
+    <div class="averages">
+        <h1><?= __('Averages') ?></h1>
+        <ul>
+            <li>
+                <span><?=__("Sales/Order")?></span>
+                <strong><?=$block->getPriceHtml($block->getTotalSales()/(count($orderCollection) == 0 ? 1 : count($orderCollection)))?></strong>
+            </li>
+            <li>
+                <span><?=__("Discount/Order")?></span>
+                <strong><?=$block->getPriceHtml($block->getTotalDiscount()/(count($orderCollection) == 0 ? 1 : count($orderCollection)))?></strong>
+            </li>
+        </ul>
+    </div>
+</div>

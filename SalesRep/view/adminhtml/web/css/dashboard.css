@@ -1,0 +1,48 @@
+@media only screen and (max-width: 1399px) {
+    .salesrep-report #chart1{
+        width: 800px !important;
+    }
+    .salesrep-report .sales-chart >div{
+        width: 800px !important;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .sales-grid .total {
+        margin: 0px 300px 0px 20px;
+    }
+    .sales-grid {
+        display: flex;
+    }
+}
+/*.sales-grid {*/
+/*    display: flex;*/
+/*}*/
+
+/*.sales-grid .total {*/
+/*    margin: 0px 200px 0px 20px;*/
+/*}*/
+
+.sales-chart p {
+    text-align: center;
+    font-weight: bold;
+}
+.sales-grid li {
+    list-style: none;
+    display: grid;
+    border: 1px solid gray;
+    border-left: 5px #eb5202 solid;
+    width: 150px;
+    padding: 5px;
+    margin: 10px;
+    font-weight: 600;
+}
+
+.sales-grid ul {
+    display: flex;
+}
+
+.sales-grid li strong {
+    color: #eb5202;
+    font-size: 16px;
+}

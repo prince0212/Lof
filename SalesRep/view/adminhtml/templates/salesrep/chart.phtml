@@ -1,0 +1,149 @@
+<?php
+use Lof\SalesRep\Block\Adminhtml\Salesrep\Grid;
+
+/**
+ * @var $block Grid
+ */
+$collection = $block->getCreatedCollection();
+$resourceCollection = $block->getResourceCollection();
+if ($resourceCollection) {
+    $period = $resourceCollection->getPeriod();
+    $start = strtotime($resourceCollection->getStartDate());
+    $end = strtotime($resourceCollection->getEndDate());
+    $arr = [];
+    $array = [];
+    foreach ($collection as $item) {
+        $arr[strtotime($item->getPeriod())] = $item->getTotalPaidAmount();
+    }
+    $startnew = 0;
+    for( ; count($array) < 500 && $start <= $end ; $start = strtotime("+1 ".$period, $start)) {
+        $date = date('m/d/Y', $start);
+        if (isset($arr[$start]) && $arr[$start]) {
+            $array[$date] = $arr[$start];
+        } else {
+            $array[$date] = 0;
+        }
+    }
+} else {
+    $array = [];
+}
+
+$array = json_encode($array)
+?>
+<div class="sales-chart">
+    <div style="width:1400px">
+        <canvas id="chart1"></canvas>
+        <p><?= __('Graph showing sales by Sales Representative') ?></p>
+    </div>
+    <br>
+    <script>
+        require([
+                'Lof_SalesRep/js/moment.min',
+                'Lof_SalesRep/js/Chart.bundle',
+                'Lof_SalesRep/js/utils'
+            ]
+            , function (moment, Chart) {
+                function generateData() {
+                    var collection = <?= $array?>;
+                    var data = [];
+                    Object.keys(collection).forEach(key => {
+                        var date = moment(key, 'M D Y');
+                        data.push({t:date.valueOf(),y:collection[key]});
+                    });
+                    return data;
+                }
+
+                var ctx = document.getElementById('chart1').getContext('2d');
+                ctx.canvas.width = 1500;
+                ctx.canvas.height = 400;
+
+                var color = Chart.helpers.color;
+                var cfg = {
+                    data: {
+                        datasets: [{
+                            label: 'Sales Rep Reports',
+                            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.red,
+                            data: generateData(),
+                            type: 'line',
+                            pointRadius: 0,
+                            fill: false,
+                            lineTension: 0,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        animation: {
+                            duration: 0
+                        },
+                        scales: {
+                            xAxes: [{
+                                type: 'time',
+                                distribution: 'series',
+                                offset: true,
+                                ticks: {
+                                    major: {
+                                        enabled: true,
+                                        fontStyle: 'bold'
+                                    },
+                                    source: 'data',
+                                    autoSkip: true,
+                                    autoSkipPadding: 75,
+                                    maxRotation: 0,
+                                    sampleSize: 100
+                                },
+                                afterBuildTicks: function (scale, ticks) {
+                                    var majorUnit = scale._majorUnit;
+                                    var firstTick = ticks[0];
+                                    var i, ilen, val, tick, currMajor, lastMajor;
+
+                                    val = moment(ticks[0].value);
+                                    if ((majorUnit === 'day' && val.hour() === 9)
+                                        || (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+                                        || (majorUnit === 'year' && val.month() === 0)) {
+                                        firstTick.major = true;
+                                    } else {
+                                        firstTick.major = false;
+                                    }
+                                    lastMajor = val.get(majorUnit);
+
+                                    for (i = 1, ilen = ticks.length; i < ilen; i++) {
+                                        tick = ticks[i];
+                                        val = moment(tick.value);
+                                        currMajor = val.get(majorUnit);
+                                        tick.major = currMajor !== lastMajor;
+                                        lastMajor = currMajor;
+                                    }
+                                    return ticks;
+                                }
+                            }],
+                            yAxes: [{
+                                gridLines: {
+                                    drawBorder: false
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Price'
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            intersect: false,
+                            mode: 'index',
+                            callbacks: {
+                                label: function(tooltipItem, myData) {
+                                    var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += parseFloat(tooltipItem.value).toFixed(2);
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                };
+                new Chart(ctx, cfg);
+            });
+    </script>
+</div>

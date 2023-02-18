@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * http://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Salesrep
+ * @copyright  Copyright (c) 2021 Landofcoder (http://www.landofcoder.com/)
+ * @license    http://www.landofcoder.com/LICENSE-1.0.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<salesrep>
+			<general>
+				<show_assign_tab>1</show_assign_tab>
+				<show_order_assign_tab>1</show_order_assign_tab>
+				<see_other_dealers>1</see_other_dealers>
+				<see_other_dealers_order>1</see_other_dealers_order>
+				<edit_no_grid>1</edit_no_grid>
+				<show_salesrep_tab_in_customer>1</show_salesrep_tab_in_customer>
+				<show_salesrep_tab_in_cmspage>1</show_salesrep_tab_in_cmspage>
+				<show_salesrep_tab_in_cmsblock>1</show_salesrep_tab_in_cmsblock>
+				<show_salesrep_tab_in_invoice>0</show_salesrep_tab_in_invoice>
+				<show_salesrep_tab_in_shipment>0</show_salesrep_tab_in_shipment>
+				<show_salesrep_tab_in_credimemo>0</show_salesrep_tab_in_credimemo>
+			</general>
+			<email>
+				<send_email_when_salesrep_change>1</send_email_when_salesrep_change>
+				<sender_email_identity>general</sender_email_identity>
+				<admin_email>admin@example.com</admin_email>
+				<admin_name>Admin</admin_name>
+				<assign_dealer>assign_dealer</assign_dealer>
+				<assign_dealer_order>assign_dealer_order</assign_dealer_order>
+				<update_dealer>update_dealer</update_dealer>
+			</email>
+			<frontend>
+				<show_dealer_on_registration>1</show_dealer_on_registration>
+				<show_dealer_in_account>1</show_dealer_in_account>
+				<show_dealer_info>1</show_dealer_info>
+			</frontend>
+		</salesrep>
+	</default>
+</config>

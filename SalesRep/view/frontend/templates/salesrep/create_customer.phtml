@@ -1,0 +1,33 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+
+?>
+<fieldset class="fieldset info">
+    <?= $block->getBlockHtml('formkey') ?>
+    <legend class="legend"><span><?= $block->escapeHtml(__('Choose a Sale Representative')) ?></span></legend><br>
+    <select id="dealer-id" name="dealer_id" title="<?= $block->escapeHtmlAttr(__('Sales Representative')) ?>" >
+        <?php $options = $block->getSalesRep(); ?>
+        <option value="0"></option>
+        <?php foreach ($options as $option): ?>
+            <option value="<?= $block->escapeHtmlAttr($option->getUserId()) ?>"><?= $block->escapeHtml(__($option->getFirstname())) ?> <?= $block->escapeHtml(__($option->getLastName())) ?></option>
+        <?php endforeach;?>
+    </select>
+</fieldset>

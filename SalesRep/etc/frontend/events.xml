@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/license
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_SalesRep
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://www.landofcoder.com/LICENSE-1.0.html
+ */
+
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="assign_customer_salesrep" instance="Lof\SalesRep\Observer\AssignCustomerSalesrep" />
+    </event>
+    <event name="lof_customer_register_success">
+        <observer name="assign_customer_b2b_salesrep" instance="Lof\SalesRep\Observer\AssignCustomerSalesrep" />
+    </event>
+    <event name="lof_rfq_controller_cart_save_quote">
+        <observer name="cart_save_quote" instance="Lof\SalesRep\Observer\CartSaveQuote" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+    <observer name="sales_order_save_salesrep" instance="Lof\SalesRep\Observer\Order\SalesOrderSaveSalesRep"  />
+</event>
+</config>

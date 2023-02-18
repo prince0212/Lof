@@ -1,0 +1,24 @@
+{
+    "name": "landofcoder/module-sales-rep",
+    "description": "Sales Representative For Order, Invoice, Shipment, Customer, CMS Page, CMS Block, Request For Quote, B2B Company Account",
+    "type": "magento2-module",
+    "version": "1.0.6",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Landofcoder",
+            "email": "landofcoder@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Lof\\SalesRep\\": ""
+        }
+    }
+}
